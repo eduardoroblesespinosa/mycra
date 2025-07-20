@@ -1,0 +1,200 @@
+body {
+    background: linear-gradient(to bottom, #000000, #1a0a2e, #3c1341);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand, .nav-link {
+    color: #f0c43c !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link.active, .nav-link:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #f0c43c;
+}
+
+.btn-primary {
+    background-color: #f0c43c;
+    border-color: #f0c43c;
+    color: #1a0a2e;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(240, 196, 60, 0.5);
+}
+
+.btn-primary:hover {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    color: #1a0a2e;
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(240, 196, 60, 0.8);
+}
+
+#sun-container {
+    width: 100%;
+    height: 300px;
+    margin: 0 auto;
+    cursor: grab;
+}
+
+#mantras-container {
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #f0c43c;
+    text-shadow: 0 0 10px #f0c43c;
+    animation: fadeIn 2s ease-in-out;
+    padding: 20px;
+    border: 1px solid rgba(240, 196, 60, 0.3);
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2);
+}
+
+#simbolo-container {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #f0c43c;
+    border: 1px solid rgba(240, 196, 60, 0.3);
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2);
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+#simbolo-container.visible {
+    opacity: 1;
+}
+
+#simbolo-display {
+    font-size: 5rem;
+    line-height: 1;
+    text-shadow: 0 0 15px #f0c43c, 0 0 30px #ffffff;
+    margin-bottom: 1rem;
+}
+
+#simbolo-texto {
+    font-size: 1.25rem;
+    text-shadow: 0 0 10px #f0c43c;
+}
+
+.mantra {
+    opacity: 0;
+    animation: fadeInMantra 3s forwards;
+}
+
+@keyframes fadeInMantra {
+    to { opacity: 1; }
+}
+
+#camera-container {
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    border: 3px solid #f0c43c;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(240, 196, 60, 0.7);
+    overflow: hidden; /* Ensures canvas fits within the rounded corners */
+}
+
+#webcam {
+    width: 100%;
+    height: auto;
+}
+
+#effects-canvas {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.diario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 15px;
+    max-width: 800px;
+}
+
+.day-card {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(240, 196, 60, 0.4);
+    background: rgba(0,0,0,0.3);
+    color: rgba(255,255,255,0.7);
+}
+
+.day-card.locked {
+    background: rgba(0,0,0,0.5);
+    color: rgba(255,255,255,0.3);
+    cursor: not-allowed;
+    border-color: rgba(255,255,255,0.2);
+}
+
+.day-card.current {
+    border-color: #f0c43c;
+    color: #f0c43c;
+    box-shadow: 0 0 15px rgba(240, 196, 60, 0.6);
+    transform: scale(1.05);
+}
+
+.day-card.completed {
+    border-color: #f0c43c;
+    background: rgba(240, 196, 60, 0.2);
+    color: #fff;
+}
+
+.day-card.completed::after {
+    content: '🏅';
+    font-size: 1rem;
+    position: absolute;
+    bottom: 5px;
+}
+
+.day-card span {
+    font-size: 0.8rem;
+    font-weight: normal;
+    position: absolute;
+    top: 5px;
+}
+
+#afirmacion-diaria-container {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.app-module {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(240, 196, 60, 0.5);
+    color: white;
+}
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #f0c43c;
+    box-shadow: 0 0 10px rgba(240, 196, 60, 0.5);
+    color: white;
+}
