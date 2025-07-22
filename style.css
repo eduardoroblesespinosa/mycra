@@ -1,0 +1,127 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #212529; /* Fallback color */
+    background-image: url('splash-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+#splash-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+#spline-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+}
+
+.splash-content {
+    position: relative; /* To appear above the canvas */
+    z-index: 2; /* Increased to be above the overlay */
+}
+
+#play-btn {
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#play-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.5);
+}
+
+.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#game-container {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+#game-container.fade-in {
+    opacity: 1;
+}
+
+.finish-line {
+    position: absolute;
+    right: 50px;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    background-image: repeating-linear-gradient(
+        -45deg,
+        #fff,
+        #fff 10px,
+        #000 10px,
+        #000 20px
+    );
+    border-left: 3px solid #ffc107;
+    border-right: 3px solid #ffc107;
+}
+
+.racer-card {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.racer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.7);
+}
+
+.racer-card.selected {
+    border: 3px solid #ffc107;
+    box-shadow: 0 0 20px rgba(255, 193, 7, 1);
+    transform: scale(1.05);
+}
+
+.animal-racer {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    transition: left 0.1s linear;
+    left: 10px;
+}
+
+#race-track-container {
+    background: #343a40 url('data:image/svg+xml;utf8,<svg width="100" height="20" viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg"><path d="M21.184 20c.357-1.12.72-2.24 1.084-3.36.363-1.12.728-2.24 1.092-3.36.363-1.12.728-2.24 1.092-3.36.363-1.12.728-2.24 1.092-3.36C25.823 5.44 26.18 4.32 26.54 3.2 26.9 2.08 27.256 1.04 27.612 0H21.184v20zm21.184 0c.357-1.12.72-2.24 1.084-3.36.363-1.12.728-2.24 1.092-3.36.363-1.12.728-2.24 1.092-3.36.363-1.12.728-2.24 1.092-3.36C47.007 5.44 47.364 4.32 47.724 3.2 48.084 2.08 48.44 1.04 48.796 0H42.368v20zm21.184 0c.357-1.12.72-2.24 1.084-3.36.363-1.12.728-2.24 1.092-3.36.363-1.12.728-2.24 1.092-3.36.363-1.12.728-2.24 1.092-3.36C68.19 5.44 68.547 4.32 68.907 3.2 69.267 2.08 69.623 1.04 69.98 0H63.552v20zm21.184 0c.357-1.12.72-2.24 1.084-3.36.363-1.12.728-2.24 1.092-3.36.363-1.12.728-2.24 1.092-3.36.363-1.12.728-2.24 1.092-3.36C89.375 5.44 89.732 4.32 90.092 3.2 90.452 2.08 90.808 1.04 91.164 0H84.736v20zM0 0v20h6.428c.357-1.12.72-2.24 1.084-3.36.363-1.12.728-2.24 1.092-3.36.363-1.12.728-2.24 1.092-3.36.363-1.12.728-2.24 1.092-3.36C10.06 5.44 10.417 4.32 10.777 3.2 11.137 2.08 11.493 1.04 11.85 0H0z" fill="#454c52" fill-opacity="0.4" fill-rule="evenodd"/>
+}
+
+.modal-header.border-warning {
+    border-bottom: 2px solid #ffc107;
+}
+
+.modal-header.border-success {
+    border-bottom: 2px solid #198754;
+}
